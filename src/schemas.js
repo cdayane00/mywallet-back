@@ -6,4 +6,9 @@ const cadastro = joi.object({
     password: joi.string().required()
 });
 
-export {cadastro};
+const login = joi.object({
+    email: joi.string().email().required(),
+    password: joi.string().required()
+});
+
+export {cadastro, login};
