@@ -42,3 +42,20 @@ export async function login(request, response){
         console.log(erro);
     }
 }
+
+export async function sair(request, response){
+    const {authorization} = request.headers;
+    const token = authorization?.replace('Bearer ', '').trim();
+
+    if(!token){
+        return response.status(401).send("Não autorizado");
+    }
+
+    try{
+        await db.collection('sessoes').deleteOne({token});
+        response.status(200).send("Saiu");
+    }
+    catch(erro){
+        console.log(erro);
+    }
+}
