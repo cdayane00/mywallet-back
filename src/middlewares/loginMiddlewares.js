@@ -1,4 +1,4 @@
-import {login} from '../schemas.js';
+import {login} from '../schemasUsuario.js';
 
 export default function loginMiddleware(request, response, next){
     const valida = login.validate(request.body, {abortEarly: false});

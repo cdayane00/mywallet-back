@@ -1,4 +1,4 @@
-import {cadastro} from '../schemas.js';
+import {cadastro} from '../schemasUsuario.js';
 
 export default function cadastroMiddleware(request, response, next){
     const valida = cadastro.validate(request.body, {abortEarly: false});

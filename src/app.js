@@ -4,7 +4,8 @@ import cors from 'cors';
 
 
 
-import rota from './routes/autenticaçãoRouter.js';
+import rotaAut from './routes/autenticaçãoRouter.js';
+import rotaReg from "./routes/registrosRouter.js";
 
 const server = express();
 server.use(express.json());
@@ -12,7 +13,8 @@ server.use(cors());
 dotenv.config();
 
 
-server.use(rota);
+server.use(rotaAut);
+server.use(rotaReg);
 
 
 server.listen(5000, () => {
