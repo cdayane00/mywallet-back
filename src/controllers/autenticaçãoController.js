@@ -27,11 +27,13 @@ export async function login(request, response){
         const user = await db.collection('usuarios').findOne({email});
         if(user && password == user.password){
             const token = uuidv4();
+            
             await db.collection('sessoes').insertOne({
                 userId: user._id,
                 token,
                 lastStatus: Date.now()
             });
+            console.log(token);
             response.status(200).send({name: user.name, token });
         }
         else{

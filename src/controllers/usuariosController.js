@@ -3,7 +3,7 @@ import db from '../bancoDeDados.js';
 dotenv.config();
 
 export async function postRegistros(request, response){
-    const {user} = request.locals;
+    const {user} = response.locals;
     const registros = request.body;
 
     try{
@@ -11,14 +11,14 @@ export async function postRegistros(request, response){
         response.sendStatus(200);
     }
     catch(erro){
-        console.log(erro);
+        console.log('erro ao inserir um registro',erro);
     }
 }
 
 export async function getRegistros(request, response){
-    const {user} = request.locals;
+    const {user} = response.locals;
 
-    const registros = await db.collection('registros').find({userId: user._id,}).toArray();
+    const registros = await db.collection('registros').find({userId: user._id}).toArray();
     registros.forEach((registro) => delete registro.userId);
     
     response.send(registros);

@@ -13,7 +13,7 @@ export default async function token(request, response, next){
             return response.status(401).send('Sessão nao existe');
         }
 
-        const user = await db.collection(usuarios).findOne({_id: sessao.userId});
+        const user = await db.collection('usuarios').findOne({_id: sessao.userId});
         if(!user){
             return response.sendStatus(401);
         }
