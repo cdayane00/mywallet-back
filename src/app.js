@@ -18,5 +18,5 @@ server.use(rotaReg);
 
 
 server.listen(process.env.PORT, () => {
-    console.log("Rodando em http://localhost:",process.env.PORT );
+    console.log("Rodando em http://localhost:" + process.env.PORT );
 });
